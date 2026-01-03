@@ -26,9 +26,9 @@ class Message:
     created_at = Column(DateTime(timezone=True))
 
 
-class Offline_Message(Message, Base):
+class Offline_Message_Model(Message, Base):
     __tablename__ = "offline_messages"
 
 
-class Chat_Log(Message, Base):
+class Chat_Log_Model(Message, Base):
     __tablename__ = "chat_log"
