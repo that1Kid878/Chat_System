@@ -2,9 +2,4 @@
 
 # Python cache
 __pycache__/
-<<<<<<< HEAD
 *.pyc
-
-=======
-*.pyc
->>>>>>> 0091f0e6edda07f7c8b79fc2acda73f126dad307
