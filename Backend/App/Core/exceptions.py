@@ -27,6 +27,10 @@ class Null_Value(Exception):
     """Expected value is null"""
 
 
+class Nonexistent_User(Exception):
+    """User does not exist in database"""
+
+
 def Integrity_Error_Handler(code: int):
     if code == DB_Exceptions.Unique_Violation:
         return Existing_Data()
