@@ -3,4 +3,4 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine(Database_URL)
-SessionLocal = sessionmaker(autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autoflush=False, bind=engine, expire_on_commit=False)
