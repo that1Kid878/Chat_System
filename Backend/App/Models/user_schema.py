@@ -1,10 +1,4 @@
-from sqlalchemy import (
-    Column,
-    UUID,
-    Text,
-    DateTime,
-    VARCHAR,
-)
+from sqlalchemy import Column, UUID, Text, DateTime, VARCHAR, text
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
@@ -13,7 +7,9 @@ Base = declarative_base()
 class User_Model(Base):
     __tablename__ = "users"
 
-    user_id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(
+        UUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()")
+    )
     username = Column(VARCHAR(50), unique=True, nullable=False)
     hashed_password = Column(Text, nullable=False)
     email = Column(Text, unique=True, nullable=False)

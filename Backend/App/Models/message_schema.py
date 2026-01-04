@@ -1,17 +1,13 @@
-from sqlalchemy import (
-    Column,
-    UUID,
-    Text,
-    DateTime,
-    ForeignKey,
-)
+from sqlalchemy import Column, UUID, Text, DateTime, ForeignKey, text
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
 
 class Message:
-    message_id = Column(UUID(as_uuid=True), primary_key=True)
+    message_id = Column(
+        UUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()")
+    )
     sender_id = Column(
         UUID(as_uuid=True),
         ForeignKey("users.user_id", ondelete="CASCADE"),
