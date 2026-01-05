@@ -13,4 +13,6 @@ class User_Model(Base):
     username = Column(VARCHAR(50), unique=True, nullable=False)
     hashed_password = Column(Text, nullable=False)
     email = Column(Text, unique=True, nullable=False)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(
+        DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP")
+    )

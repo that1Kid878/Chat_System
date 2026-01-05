@@ -19,7 +19,9 @@ class Message:
         nullable=False,
     )
     body = Column(Text, nullable=False)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(
+        DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP")
+    )
 
 
 class Offline_Message_Model(Message, Base):
