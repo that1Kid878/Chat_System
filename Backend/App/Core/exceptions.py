@@ -2,13 +2,9 @@ from enum import Enum
 
 
 class DB_Exceptions(Enum):
-    Unique_Violation = 23505
-    Foreign_Key_Violation = 23503
-    Not_Null_Violation = 23502
-
-
-class Missing_Parameters(Exception):
-    """Function or operations missing important parameters"""
+    Unique_Violation = "23505"
+    Foreign_Key_Violation = "23503"
+    Not_Null_Violation = "23502"
 
 
 class Invalid_Parameters(Exception):
@@ -29,6 +25,14 @@ class Null_Value(Exception):
 
 class Nonexistent_User(Exception):
     """User does not exist in database"""
+
+
+class Expired_Access_Token(Exception):
+    """Access token is expired"""
+
+
+class Invalid_Access_Token(Exception):
+    """Access token is invalid"""
 
 
 def Integrity_Error_Handler(code: int):
