@@ -2,3 +2,4 @@ pytest
 jose
 sqlalchemy
 bcrypt
+dotenv
