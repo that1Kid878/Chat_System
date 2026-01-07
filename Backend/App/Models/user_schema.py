@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Text, DateTime, VARCHAR, text
+from sqlalchemy import Text, DateTime, VARCHAR, text
 from sqlalchemy.orm import mapped_column
 from Backend.App.Core.database import Base
 from Backend.App.Core.types import GUID
