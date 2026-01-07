@@ -15,7 +15,7 @@ class Refresh_Token_Model(Base):
     )
     token_hash = Column(Text, nullable=False)
     expire_at = Column(DateTime(timezone=True), nullable=False)
-    revoked = Column(Boolean, server_default=False)
+    revoked = Column(Boolean, server_default="FALSE")
     created_at = Column(
         DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP")
     )
