@@ -4,11 +4,9 @@ from Backend.App.Repositories.user_repo import (
     Delete_User,
 )
 from Backend.App.Models.user_schema import User_Model
-from Backend.App.Core.database import SessionLocal
 
 
-def test_user_creation():
-    db = SessionLocal()
+def test_user_creation(db):
     User = User_Model()
     User.username = "that1Kid"
     User.email = "nice@gmail.com"
@@ -24,5 +22,3 @@ def test_user_creation():
     Delete_User(db, DB_User.user_id)
 
     assert Get_User_By_Username(db, username="that1Kid") is None
-
-    db.close()

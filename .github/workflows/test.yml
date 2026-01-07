@@ -3,7 +3,7 @@ name: Run tests
 on: [push, pull_request]
 
 env:
-  Database_URL: 'postgresql://postgres:Akidanaqi10@localhost:5432/Chat_System'
+  Database_URL: 'sqlite:///./test.db'
   ACCESS_SECRET_KEY: '7abbee9cf8f18ea0c1a60b6905cd412e'
   REFRESH_TOKEN_PEPPER: '47c01147a0d22fc9aa036f5c9886cb5a'
   
