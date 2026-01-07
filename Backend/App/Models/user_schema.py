@@ -1,7 +1,5 @@
 from sqlalchemy import Column, UUID, Text, DateTime, VARCHAR, text
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from Backend.App.Core.database import Base
 
 
 class User_Model(Base):

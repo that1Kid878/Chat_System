@@ -1,7 +1,5 @@
 from sqlalchemy import Column, UUID, Text, DateTime, Boolean, ForeignKey, text
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from Backend.App.Core.database import Base
 
 
 class Refresh_Token_Model(Base):
