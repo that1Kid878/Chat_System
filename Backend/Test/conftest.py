@@ -10,9 +10,7 @@ Base = declarative_base()
 
 @pytest.fixture
 def db():
-    engine = create_engine(
-        "sqlite:///./test.db", connect_args={"check_same_threads": False}
-    )
+    engine = create_engine("sqlite:///./test.db")
 
     TestingSessionLocal = sessionmaker(bind=engine)
 
