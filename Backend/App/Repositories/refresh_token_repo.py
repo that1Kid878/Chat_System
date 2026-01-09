@@ -58,6 +58,7 @@ def Create_Refresh_Token(db: Session, User_Id: int, ExpireDelta: timedelta):
         db.commit()
         db.refresh(Token)
     except IntegrityError as error:
+        db.rollback()
         pg_error = error.orig
         pg_code = getattr(pg_error, "pgcode")
         raise Integrity_Error_Handler(pg_code)
@@ -71,4 +72,5 @@ def Delete_Refresh_Token(db: Session, token_id: UUID):
         db.delete(Token)
         db.commit()
     else:
+        db.rollback()
         raise Invalid_Parameters()
