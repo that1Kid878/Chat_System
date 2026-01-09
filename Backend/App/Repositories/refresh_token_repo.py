@@ -1,11 +1,13 @@
+from datetime import timedelta, datetime
 from Backend.App.Models.refresh_token_schema import Refresh_Token_Model
+from Backend.App.Core.security import Generate_Refresh_Token, Hash_Refresh_Token
 from Backend.App.Core.exceptions import (
     Invalid_Parameters,
     Integrity_Error_Handler,
 )
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
-from uuid import UUID
+from uuid import UUID, uuid4
 
 
 def Get_Refresh_Token_By_Hash(
@@ -41,7 +43,16 @@ def Get_Refresh_Token_By_Token_Id(
     return Token
 
 
-def Create_Database_Refresh_Token(db: Session, Token: Refresh_Token_Model):
+def Create_Refresh_Token(db: Session, User_Id: int, ExpireDelta: timedelta):
+    Token_Id = uuid4()
+    Token_Content = Generate_Refresh_Token(Token_Id)
+
+    Token = Refresh_Token_Model()
+    Token.token_id = Token_Id
+    Token.user_id = User_Id
+    Token.token_hash = Hash_Refresh_Token(Token_Content)
+    Token.expire_at = datetime.now() + ExpireDelta
+
     try:
         db.add(Token)
         db.commit()
@@ -50,6 +61,8 @@ def Create_Database_Refresh_Token(db: Session, Token: Refresh_Token_Model):
         pg_error = error.orig
         pg_code = getattr(pg_error, "pgcode")
         raise Integrity_Error_Handler(pg_code)
+
+    return Token_Content
 
 
 def Delete_Refresh_Token(db: Session, token_id: UUID):
