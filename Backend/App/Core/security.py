@@ -19,7 +19,7 @@ def Compare_Hash_With_String(String: str, Hash: str) -> True:
     return bcrypt.checkpw(String.encode(), Hash.encode())
 
 
-def Create_New_Refresh_Token(Token_id: UUID) -> str:
+def Generate_Refresh_Token(Token_id: UUID) -> str:
     Secret = secrets.token_urlsafe()
     return f"{Token_id}.{Secret}"
 
