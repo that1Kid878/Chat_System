@@ -35,6 +35,10 @@ class Invalid_Access_Token(Exception):
     """Access token is invalid"""
 
 
+class Invalid_Credentials(Exception):
+    """Access is forbidden due to invalid creds"""
+
+
 def Integrity_Error_Handler(code: int):
     if code == DB_Exceptions.Unique_Violation:
         return Existing_Data()
