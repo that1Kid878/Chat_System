@@ -18,7 +18,7 @@ def Get_User_By_Username(db: Session, username: str) -> User_Model | None:
     return User
 
 
-def Create_User(db: Session, User: User_Model):
+def Create_Database_User(db: Session, User: User_Model):
     try:
         db.add(User)
         db.commit()
@@ -29,7 +29,7 @@ def Create_User(db: Session, User: User_Model):
         raise Integrity_Error_Handler(pg_code)
 
 
-def Delete_User(db: Session, user_id: UUID = None):
+def Delete_Database_User(db: Session, user_id: UUID = None):
     User = Get_User_By_Id(db, user_id)
     if User:
         db.delete(User)
