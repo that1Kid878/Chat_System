@@ -26,7 +26,7 @@ def Login(Username: str, Password: str, db: Session):
         raise Nonexistent_User("Username is invalid")
 
     Hashed_Password = User.hashed_password
-    if Compare_Hash_With_String(Password, Hashed_Password):
+    if not Compare_Hash_With_String(Password, Hashed_Password):
         raise Invalid_Credentials("Password invalid")
 
     Access_Token = Create_New_Acces_Token(
