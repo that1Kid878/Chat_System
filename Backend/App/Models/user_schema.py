@@ -1,4 +1,4 @@
-from sqlalchemy import Text, DateTime, VARCHAR, text
+from sqlalchemy import Text, DateTime, VARCHAR, Boolean, text
 from sqlalchemy.orm import mapped_column
 from Backend.App.Core.database import Base
 from Backend.App.Core.types import GUID
@@ -20,3 +20,4 @@ class User_Model(Base):
     created_at = mapped_column(
         DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP")
     )
+    verified = mapped_column(Boolean, server_default=text("false"))
